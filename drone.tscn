@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cludimscd27ed"]
+[gd_scene load_steps=5 format=3 uid="uid://cludimscd27ed"]
 
 [ext_resource type="Material" uid="uid://btku0ouh17t7f" path="res://drone_body_colour.tres" id="1_uvgqj"]
+[ext_resource type="PackedScene" uid="uid://dilysk70bq788" path="res://drone_arm.tscn" id="2_d5du7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uvgqj"]
 size = Vector3(0.5, 0.25, 1)
@@ -20,3 +21,15 @@ material_override = ExtResource("1_uvgqj")
 mesh = SubResource("BoxMesh_etgmo")
 
 [node name="Arms" type="Node3D" parent="CharacterBody3D"]
+
+[node name="Back left" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.255, 0, 0.5)
+
+[node name="Back right" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.255, 0, 0.5)
+
+[node name="Front left" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.255, 0, -0.5)
+
+[node name="Front right" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.255, 0, -0.5)

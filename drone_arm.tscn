@@ -12,10 +12,10 @@ size = Vector3(0.75, 0.1, 0.1)
 size = Vector3(0.75, 0.1, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6kkjy"]
-size = Vector3(0.25, 0.025, 0.025)
+size = Vector3(0.5, 0.025, 0.025)
 
 [sub_resource type="BoxMesh" id="BoxMesh_66883"]
-size = Vector3(0.25, 0.025, 0.025)
+size = Vector3(0.5, 0.025, 0.025)
 
 [node name="drone_arm" type="Node3D"]
 
