@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dilysk70bq788"]
+[gd_scene load_steps=9 format=3 uid="uid://dilysk70bq788"]
 
 [ext_resource type="Material" uid="uid://btku0ouh17t7f" path="res://drone_body_colour.tres" id="1_6kkjy"]
+[ext_resource type="Script" uid="uid://c55sprc4jlyln" path="res://rigid_body_3d.gd" id="1_qbgho"]
+[ext_resource type="Script" uid="uid://82pcvxnjgyfa" path="res://props.gd" id="3_vg7gq"]
+[ext_resource type="Material" uid="uid://bv83t84sfmlfv" path="res://prop_colour.tres" id="4_vg7gq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3di8n"]
 size = Vector3(0.75, 0.1, 0.1)
@@ -8,9 +11,16 @@ size = Vector3(0.75, 0.1, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_66883"]
 size = Vector3(0.75, 0.1, 0.1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_6kkjy"]
+size = Vector3(0.25, 0.025, 0.025)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66883"]
+size = Vector3(0.25, 0.025, 0.025)
+
 [node name="drone_arm" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+script = ExtResource("1_qbgho")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 material_override = ExtResource("1_6kkjy")
@@ -18,3 +28,16 @@ mesh = SubResource("BoxMesh_3di8n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_66883")
+
+[node name="Props" type="Node3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.351175, 0.0624524, 0)
+script = ExtResource("3_vg7gq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/Props"]
+material_override = ExtResource("4_vg7gq")
+mesh = SubResource("BoxMesh_6kkjy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D/Props"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("4_vg7gq")
+mesh = SubResource("BoxMesh_66883")
