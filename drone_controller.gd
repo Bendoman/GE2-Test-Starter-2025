@@ -9,14 +9,9 @@ var liftForce:Vector3 = Vector3(0, liftIntensity, 0)
 @export var driveIntensity = 15
 var driveForce:Vector3 = Vector3(0, 0, driveIntensity)
 
-@export var rotationIntensity = 5
-
-func _ready():
-	pass
-	
-func _process(delta): 
-	
-	pass
+@export var rotationIntensity = 3
+@export var tiltIntensity = 0.5
+var maxTilt = 2
 
 func _physics_process(delta):
 	velocity += (gravity * delta)
@@ -27,7 +22,9 @@ func _physics_process(delta):
 	if(global_position.y > 1):
 		var move = Input.get_axis("forward", "reverse")
 		if(move != 0):
-			velocity += (driveForce * delta * move)
+			velocity += (global_basis.z * delta * move * driveIntensity)
+			
+			
 	# Apply drag 
 	if(velocity.z < 0):
 		velocity += (delta * drag)
@@ -36,10 +33,9 @@ func _physics_process(delta):
 	
 	if(global_position.y < 2): # Fully stop forward or reverse movement when on ground
 		velocity.z = 0
+		velocity.x = 0
 	
-	var rotate = Input.get_axis("left", "right")
+	var rotate = Input.get_axis("right", "left")
 	if(rotate != 0):
 		rotate_y(rotationIntensity * delta * rotate)
-	
-	
 	move_and_slide()
