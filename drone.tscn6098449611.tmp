@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cludimscd27ed"]
+
+[ext_resource type="Script" uid="uid://b2e2pk82hbqhv" path="res://drone_controller.gd" id="1_puw62"]
+[ext_resource type="Material" uid="uid://btku0ouh17t7f" path="res://drone_body_colour.tres" id="1_uvgqj"]
+[ext_resource type="PackedScene" uid="uid://dilysk70bq788" path="res://drone_arm.tscn" id="2_d5du7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvgqj"]
+size = Vector3(0.5, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_etgmo"]
+size = Vector3(0.5, 0.25, 1)
+
+[node name="Drone" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_puw62")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_uvgqj")
+
+[node name="Body" type="MeshInstance3D" parent="CharacterBody3D"]
+material_override = ExtResource("1_uvgqj")
+mesh = SubResource("BoxMesh_etgmo")
+
+[node name="Arms" type="Node3D" parent="CharacterBody3D"]
+
+[node name="Back left" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.255, 0, 0.5)
+
+[node name="Back right" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0.255, 0, 0.5)
+
+[node name="Front left" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -0.255, 0, -0.5)
+
+[node name="Front right" parent="CharacterBody3D/Arms" instance=ExtResource("2_d5du7")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.255, 0, -0.5)
+
+[node name="CameraMarker" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3535, 3.88929)

@@ -38,7 +38,7 @@ func _physics_process(delta):
 		velocity.x = 0
 		
 	if(move == 0 and global_rotation.x != 0): 
-		global_rotation.x = 0
+		global_rotation.x = lerp(global_rotation.x, 0.0, delta*3)
 	
 
 	
