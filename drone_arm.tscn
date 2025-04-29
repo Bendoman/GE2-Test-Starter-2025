@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dilysk70bq788"]
+
+[ext_resource type="Material" uid="uid://btku0ouh17t7f" path="res://drone_body_colour.tres" id="1_6kkjy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3di8n"]
+size = Vector3(0.75, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_66883"]
+size = Vector3(0.75, 0.1, 0.1)
+
+[node name="drone_arm" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+material_override = ExtResource("1_6kkjy")
+mesh = SubResource("BoxMesh_3di8n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_66883")
