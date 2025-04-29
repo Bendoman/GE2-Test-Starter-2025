@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1mt883kcp3i"]
+[gd_scene load_steps=10 format=3 uid="uid://b1mt883kcp3i"]
 
 [ext_resource type="PackedScene" uid="uid://cludimscd27ed" path="res://drone.tscn" id="1_qhlfa"]
 [ext_resource type="Script" uid="uid://dwu73gso4ali0" path="res://camera_3d.gd" id="2_jgr37"]
+[ext_resource type="PackedScene" uid="uid://dcrde374hl6vp" path="res://hoop.tscn" id="3_qrxkg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jgr37"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -17,7 +18,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrrl7"]
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(0.33717, 0.643298, 0.240344, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qhlfa"]
 material = SubResource("StandardMaterial3D_wrrl7")
@@ -48,3 +49,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283888, 0.383024, 0.056565
 [node name="Camera3D" type="Camera3D" parent="Drone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208786, 1.38973, 4.17228)
 script = ExtResource("2_jgr37")
+
+[node name="Hoops" type="Node3D" parent="."]
+
+[node name="Hoop" parent="Hoops" instance=ExtResource("3_qrxkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0465, 0, -0.453705)
+
+[node name="Hoop2" parent="Hoops" instance=ExtResource("3_qrxkg")]
+transform = Transform3D(0.585764, 0, 0.810481, 0, 1, 0, -0.810481, 0, 0.585764, 23.8928, 0, -5.05517)
+
+[node name="Hoop3" parent="Hoops" instance=ExtResource("3_qrxkg")]
+transform = Transform3D(-0.125004, 0, 0.992156, 0, 1, 0, -0.992156, 0, -0.125004, 28.3599, 0, -18.1258)
+
+[node name="Hoop4" parent="Hoops" instance=ExtResource("3_qrxkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85662, 0, 0)
+
+[node name="Hoop6" parent="Hoops" instance=ExtResource("3_qrxkg")]
+transform = Transform3D(-0.0709229, 0, 0.997482, 0, 1, 0, -0.997482, 0, -0.0709229, -25.7379, 0, 14.8917)
+
+[node name="Hoop5" parent="Hoops" instance=ExtResource("3_qrxkg")]
+transform = Transform3D(0.828285, 0, 0.560307, 0, 1, 0, -0.560307, 0, 0.828285, -17.6869, 0, 3.85519)
